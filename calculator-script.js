@@ -22,38 +22,38 @@ class Calculator {
     pickOperator(operation) {
         // this check allows us not to input anything if the display is empty
         if(this.cOperator === '') return
-        //this check allows us to compute the previous inputs if another operator is chosen
+        //this check allows us to calcualte the prevDious inputs if another operator symbol is chosen
         if(this.cOperator !== '') {
-            this.compute()
+            this.calcualte()
         }
             this.operation = operation
             this.lOperator = this.cOperator
             this.cOperator = ''
     }
-    compute() {
+    calcualte() {
 
-        let computation
-        const prev = parseFloat(this.lOperator)
-        const current = parseFloat(this.cOperator)
+        let answers
+        const prevD = parseFloat(this.lOperator)
+        const currentD = parseFloat(this.cOperator)
         //this is checking if there is anything currently to computate
-        if(isNaN(prev) || isNaN(current)) return
+        if(isNaN(prevD) || isNaN(currentD)) return
         switch(this.operation) {
             case '+':
-                computation = prev + current
+                answers = prevD + currentD
                 break
             case '-':
-                computation = prev - current
+                answers = prevD - currentD
                 break
             case '/':
-                computation = prev / current
+                answers = prevD / currentD
                 break
             case '*':
-                computation = prev * current
+                answers = prevD * currentD
                 break
             default:
                 return
         }
-        this.cOperator = computation
+        this.cOperator = answers
         this.operation = ''
         this.lOperator = ''
     }
@@ -121,7 +121,7 @@ oprationButtons.forEach(button => {button.addEventListener('click', () => {
 })
 
 equalsButton.addEventListener('click', button => {
-    calculator.compute()
+    calculator.calcualte()
     calculator.updateDisplay()
 })
 allClearButton.addEventListener('click', button => {
